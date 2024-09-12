@@ -156,7 +156,6 @@ input:focus {
   align-items: center;
   justify-content: center;
   border-top: 2px solid var(--primary-color); /* Garis biru di atas */
-  border-bottom: 2px solid var(--primary-color); /* Garis biru di bawah */
   padding: 10px 0;
   max-width: 100%; /* Mencegah elemen melampaui lebar */
   margin: 0 auto;
