@@ -27,31 +27,7 @@
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   </head>
   <body>
-    <header>
-      <!-- ASCII art telah dihapus -->
-    </header>
-    <!-- Popup dinonaktifkan -->
-    <!-- <div id="popupNotification" class="popup">
-      <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <p class="main">Welcome to the TempMail!</p>
-        <p>
-          TempMail is a simple web application that allows you to generate
-          temporary email addresses and view the emails received by these
-          addresses.
-        </p>
-        <p>This project use 1secmail's api for create e-mails. </p>
-        <p>
-          ⚠️ This project is purely for educational purposes. We do not allow
-          illegal things to be done with this project and we are not responsible
-          for any incidents that may occur. Use it legally ⚠️
-        </p>
-
-        <p class="main" style="font-size: 0.75rem !important">
-          &copy; 2024 Mehmet Kahya - TempMail
-        </p>
-      </div>
-    </div> -->
+    <header></header>
     <div class="horizontalContainer">
       <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
@@ -80,10 +56,15 @@
     <script src="api.js"></script>
 
     <script>
-      // Fungsi untuk menutup popup dinonaktifkan karena popup tidak lagi digunakan
-      // window.onload = function () {
-      //   document.getElementById("popupNotification").style.display = "block";
-      // };
+      window.onload = function () {
+        // Memanggil refreshMail() segera setelah halaman dimuat
+        refreshMail();
+
+        // Memanggil refreshMail() setiap 5 detik secara otomatis
+        setInterval(function () {
+          refreshMail();
+        }, 5000); // 5000ms = 5 detik
+      };
 
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
