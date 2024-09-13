@@ -57,17 +57,56 @@
 
     <script>
       window.onload = function () {
+        // Cek clipboard untuk email segera setelah halaman dimuat
+        checkClipboardForEmail();
+
         // Memanggil refreshMail() segera setelah halaman dimuat
         refreshMail();
 
-        // Memanggil refreshMail() setiap 5 detik secara otomatis
+        // Memanggil refreshMail() setiap 500 milidetik secara otomatis
         setInterval(function () {
           refreshMail();
-        }, 500); // 5000ms = 5 detik
+        }, 500); // 500ms = 0.5 detik
       };
 
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
+      }
+
+      // Fungsi untuk menempelkan alamat email ke input
+      function pasteEmail(email) {
+        const emailInput = document.getElementById('addr'); // Mengakses elemen input
+        if (emailInput) {
+          emailInput.value = email; // Menempelkan email ke input
+        } else {
+          console.error("Element input tidak ditemukan.");
+        }
+      }
+
+      // Fungsi untuk validasi apakah string adalah email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email); // Menggunakan RegEx untuk cek format email
+      }
+
+      // Fungsi untuk mendapatkan data dari clipboard
+      async function checkClipboardForEmail() {
+        try {
+          const text = await navigator.clipboard.readText(); // Mengambil data dari clipboard
+          if (isValidEmail(text)) {
+            pasteEmail(text); // Jika valid, paste ke input email
+          } else {
+            console.log("Clipboard tidak mengandung email yang valid.");
+          }
+        } catch (err) {
+          console.error("Gagal membaca clipboard: ", err);
+        }
+      }
+
+      // Fungsi untuk generate email baru (simulasi)
+      function genEmail() {
+        const generatedEmail = "example@example.com"; // Contoh email yang digenerate
+        pasteEmail(generatedEmail); // Memanggil fungsi untuk paste ke input
       }
     </script>
   </body>
