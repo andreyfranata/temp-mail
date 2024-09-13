@@ -35,19 +35,20 @@ header ::selection {
 header {
   background-color: var(--primary-color);
   color: var(--light-color);
-  padding: 0.5rem 1rem; /* Reduced padding */
+  padding: 0.5rem; /* Adjust padding */
   text-align: center;
   width: 100%;
+  box-sizing: border-box;
   z-index: 1000;
 }
 
 header h1 {
   margin: 0;
-  font-size: 1.5rem; /* Reduced font size */
+  font-size: 1.5rem; /* Adjust font size */
 }
 
 header img {
-  width: 30px; /* Adjusted logo size */
+  width: 30px; /* Adjust logo size */
   vertical-align: middle;
   margin-right: 10px;
 }
@@ -95,6 +96,7 @@ input {
   margin: 0.25rem;
   width: 100%;
   outline: none;
+  box-sizing: border-box;
 }
 
 input:focus {
@@ -148,8 +150,8 @@ input:focus {
   justify-content: center;
   border-top: 2px solid var(--primary-color); /* Blue line on top */
   padding: 10px 0;
-  width: 100%; /* Ensure full width */
-  max-width: 1200px; /* Optional: max width for better alignment */
+  width: 100%;
+  max-width: 1200px; /* Limit container width */
   margin: 0 auto;
 }
 
@@ -192,6 +194,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+  box-sizing: border-box;
   font-weight: bolder !important;
 }
 
@@ -230,7 +233,7 @@ footer {
 
 @media (max-width: 768px) {
   button {
-    font-size: 0.6rem;
+    font-size: 0.7rem; /* Adjusted font size */
   }
   input {
     font-size: 0.8rem;
@@ -252,7 +255,7 @@ footer {
 
 @media (max-width: 576px) {
   button {
-    font-size: 0.5rem;
+    font-size: 0.6rem; /* Adjusted font size */
   }
   input {
     font-size: 0.7rem;
@@ -270,7 +273,7 @@ footer {
 
 @media (max-width: 320px) {
   button {
-    font-size: 0.4rem;
+    font-size: 0.5rem; /* Adjusted font size */
   }
   input {
     font-size: 0.6rem;
