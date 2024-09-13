@@ -17,6 +17,62 @@
     />
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
     <script src="api.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Arial", sans-serif;
+        }
+
+        header {
+            background-color: #040e66;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .contentContainer {
+            padding: 20px;
+        }
+
+        #emailContent {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        #emailContent div {
+            margin-bottom: 10px;
+        }
+
+        #emailContent strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #040e66;
+            color: #fff;
+            text-align: center;
+            font-size: small;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .social a {
+            margin: 5px;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #d6e3f3;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -55,12 +111,12 @@
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
                         <div><strong>Subject:</strong><br>${email.subject}</div>
-                        <div style="margin-top: 20px;"><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
                     if (email.attachments && email.attachments.length > 0) {
-                        const attachments = $('<div style="margin-top: 20px;"><strong>Attachments:</strong><br></div>');
+                        const attachments = $('<div><strong>Attachments:</strong><br></div>');
                         email.attachments.forEach(file => {
                             attachments.append(`<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a><br>`);
                         });
