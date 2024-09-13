@@ -5,52 +5,70 @@
 -------------------------------->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TempMail</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
+    <link rel="manifest" href="manifest.json" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     />
     <script src="api.js"></script>
+
+    <script id="_wau776">
+      var _wau = _wau || [];
+      _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
+    </script>
+    <script async src="//waust.at/d.js"></script>
     <!-- Add favicon -->
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-</head>
-<body>
+  </head>
+  <body>
     <header>
+      <div class="header-content">
         <h1>Temp-Mail</h1>
+      </div>
     </header>
     <div class="horizontalContainer">
-        <input id="addr" placeholder="email address" />
-        <button id="newAddressButton" onclick="genEmail()">New Address</button>
+      <input id="addr" placeholder="email address" />
+      <button onclick="refreshMail()">Load Mail</button>
+      <button onclick="genEmail()">New Address</button>
     </div>
     <table id="emails"></table>
 
     <footer>
-        Andrey Franata - 2024 - TempMail -
-        <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
-        <div class="social">
-            <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://github.com/mehmetkahya0" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
+      Andrey Franata - 2024 - TempMail -
+      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
+      <div class="social">
+        <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/mehmetkahya0" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
     </footer>
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="api.js"></script>
 
     <script>
-      // Automatically generate a new email address on page load
-      $(document).ready(function() {
-        genEmail(); // Generate a new email address
-        setInterval(refreshMail, 5000); // Refresh mail every 5 seconds
-      });
+      window.onload = function () {
+        // Memanggil refreshMail() segera setelah halaman dimuat
+        refreshMail();
+
+        // Memanggil refreshMail() setiap 5 detik secara otomatis
+        setInterval(function () {
+          refreshMail();
+        }, 500); // 5000ms = 5 detik
+      };
+
+      function closePopup() {
+        document.getElementById("popupNotification").style.display = "none";
+      }
     </script>
-</body>
+  </body>
 </html>
