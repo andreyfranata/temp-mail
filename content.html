@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Content</title>
+</head>
+<body>
+  <header>
+    <h1>Email Content</h1>
+  </header>
+
+  <div id="emailContent">
+    <p>Loading content...</p>
+  </div>
+
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+      const user = urlParams.get("user");
+      const domain = urlParams.get("domain");
+
+      if (id && user && domain) {
+        $.getJSON(
+          `https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`,
+          (email) => {
+            const emailContent = $("#emailContent");
+
+            if (email.htmlBody) {
+              emailContent.html(email.htmlBody);
+            } else {
+              emailContent.text(email.body);
+            }
+
+            const atts = $("<div></div>");
+            for (const file of email.attachments) {
+              atts.append(
+                `<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a>`
+              );
+            }
+            emailContent.append(atts);
+          }
+        );
+      } else {
+        $("#emailContent").text("Invalid email data.");
+      }
+    });
+  </script>
+</body>
+</html>
