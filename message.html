@@ -16,7 +16,6 @@
         href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     />
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-    <script src="api.js"></script>
     <style>
         body {
             margin: 0;
@@ -32,6 +31,8 @@
 
         .contentContainer {
             padding: 20px;
+            max-width: 800px; /* Set maximum width for content container */
+            margin: 0 auto; /* Center the container */
         }
 
         #emailContent {
@@ -39,6 +40,7 @@
             padding: 20px;
             border-radius: 5px;
             background-color: #f9f9f9;
+            word-wrap: break-word; /* Ensure long words break to fit container */
         }
 
         #emailContent div {
@@ -110,8 +112,8 @@
                     contentElement.html(`
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
-                        <div><strong>Subject:</strong>${email.subject}</div>
-                        <div><br><strong>Message:</strong>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div><strong>Subject:</strong> ${email.subject}</div>
+                        <div><br><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
@@ -125,12 +127,6 @@
                 });
             }
         });
-
-        function warningAlert() {
-            alert(
-                "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses 1secmail's API for creating e-mails. Use it legally ⚠️"
-            );
-        }
     </script>
 </body>
 </html>
