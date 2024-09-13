@@ -162,6 +162,24 @@ input:focus {
 #addr {
   flex: 1;
   max-width: 49%;
+  position: relative;
+  padding-right: 30px; /* Memberi ruang untuk tombol 'X' */
+}
+
+#addr + #clear-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666; /* Warna tombol X */
+}
+
+#addr + #clear-btn:hover {
+  color: #000; /* Warna tombol X saat hover */
 }
 
 .horizontalContainer button {
@@ -241,7 +259,6 @@ footer {
   color: var(--light-color);
   cursor: pointer;
 }
-
 
 @media (max-width: 768px) {
   button {
