@@ -66,7 +66,7 @@
                 $.getJSON(`https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`, function(email) {
                     const contentElement = $('#emailContent');
                     contentElement.html(`
-                        <div><b>From :</b> ${email.from}</b></div>
+                        <div><b>From : ${email.from}</b></div>
                         <div><b>Date :</b> ${email.date}</div>
                         <div><b>Subject : ${email.subject}</b></div>
                         <div><strong>Message:</strong>${email.htmlBody ? email.htmlBody : email.body}</div>
