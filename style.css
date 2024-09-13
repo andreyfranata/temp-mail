@@ -62,8 +62,8 @@ header p {
 }
 
 button {
-  padding: 0.5rem 1rem; /* Increase padding for better size */
-  font-size: 1rem; /* Ensure font size is consistent */
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
   font-weight: bolder !important;
   border: 1px solid var(--dark-color);
   border-radius: var(--border-radius);
@@ -97,12 +97,12 @@ button.success {
 }
 
 input {
-  padding: 0.5rem; /* Increase padding for better size */
+  padding: 0.25rem;
   font-size: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--secondary-color);
   margin: 0.25rem;
-  width: calc(100% - 2.75rem); /* Adjust width to account for button */
+  width: 100%;
   outline: none;
 }
 
@@ -154,35 +154,23 @@ input:focus {
   display: flex;
   gap: 10px;
   align-items: center;
-  width: 100%;
   justify-content: center;
+  border-top: 2px solid var(--primary-color); /* Garis biru di atas */
+  padding: 10px 0;
+  max-width: 100%; /* Mencegah elemen melampaui lebar */
   margin: 0 auto;
-  position: relative; /* Ensure the clear button can be positioned correctly */
 }
 
 #addr {
   flex: 1;
-  max-width: 49%;
-  padding-right: 2.75rem; /* Space for the clear button */
+  max-width: 60%; /* Membatasi lebar maksimal input */
+  padding: 10px;
 }
 
-#clear-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: none;
-  color: var(--dark-color);
-  font-size: 1rem;
+.horizontalContainer button {
+  flex: 0 1 auto;
+  padding: 10px 20px;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
-}
-
-#clear-btn:hover {
-  color: var(--primary-color);
 }
 
 #emails {
@@ -200,9 +188,6 @@ input:focus {
 #emails td {
   border: 1px solid #ddd;
   padding: 8px;
-  white-space: nowrap; /* Prevent text from wrapping to the next line */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
 #emails th {
@@ -233,13 +218,12 @@ footer {
   justify-content: center;
   margin: 0 auto;
 }
-
 .social a {
   margin: 5px;
   font-size: 1rem;
   text-align: center;
   display: inline-block;
-  color: var(--font-color);
+  color: var(--main-fonts-color);
 }
 
 .social a:hover {
@@ -261,6 +245,7 @@ footer {
   color: var(--light-color);
   cursor: pointer;
 }
+
 
 @media (max-width: 768px) {
   button {
