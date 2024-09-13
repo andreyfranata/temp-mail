@@ -4,12 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Email Content</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .email-details {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .email-details p {
+      margin: 5px 0;
+    }
+
+    #emailContent {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Email Content</h1>
   </header>
 
+  <!-- Area untuk menampilkan detail email -->
+  <div class="email-details">
+    <p><strong>From:</strong> <span id="emailFrom">Loading...</span></p>
+    <p><strong>Date:</strong> <span id="emailDate">Loading...</span></p>
+    <p><strong>Subject:</strong> <span id="emailSubject">Loading...</span></p>
+  </div>
+
+  <!-- Area untuk menampilkan isi email -->
   <div id="emailContent">
     <p>Loading content...</p>
   </div>
@@ -26,6 +59,12 @@
         $.getJSON(
           `https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`,
           (email) => {
+            // Update informasi "From", "Date", dan "Subject"
+            $("#emailFrom").text(email.from);
+            $("#emailDate").text(email.date);
+            $("#emailSubject").text(email.subject);
+
+            // Update isi email
             const emailContent = $("#emailContent");
 
             if (email.htmlBody) {
@@ -34,10 +73,11 @@
               emailContent.text(email.body);
             }
 
+            // Menampilkan lampiran jika ada
             const atts = $("<div></div>");
             for (const file of email.attachments) {
               atts.append(
-                `<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a>`
+                `<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a><br/>`
               );
             }
             emailContent.append(atts);
