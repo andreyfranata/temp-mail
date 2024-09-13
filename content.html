@@ -1,92 +1,82 @@
+<!--------------------------------
+    Author: Mehmet Kahya
+    Created: 17 March 2024
+    Last Updated: 28 Aug 2024
+-------------------------------->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Email Content</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .email-details {
-      margin-bottom: 20px;
-      font-size: 16px;
-    }
-
-    .email-details p {
-      margin: 5px 0;
-    }
-
-    #emailContent {
-      border-top: 1px solid #ddd;
-      padding-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Content</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    />
+    <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
+    <script src="api.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Email Content</h1>
-  </header>
+    <header></header>
+    <div class="contentContainer">
+        <button onclick="window.history.back()">Back to Inbox</button>
+        <div id="emailContent">
+            <!-- Email content will be loaded here -->
+        </div>
+    </div>
+    <footer>
+        Andrey Franata - 2024 - TempMail -
+        <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
+        <div class="social">
+            <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/mehmetkahya0" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <button class="warning-button" onclick="warningAlert()">
+            ⚠️ Warning Note ⚠️
+        </button>
+    </footer>
 
-  <!-- Area untuk menampilkan detail email -->
-  <div class="email-details">
-    <p><strong>From:</strong> <span id="emailFrom">Loading...</span></p>
-    <p><strong>Date:</strong> <span id="emailDate">Loading...</span></p>
-    <p><strong>Subject:</strong> <span id="emailSubject">Loading...</span></p>
-  </div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const user = urlParams.get('user');
+            const domain = urlParams.get('domain');
 
-  <!-- Area untuk menampilkan isi email -->
-  <div id="emailContent">
-    <p>Loading content...</p>
-  </div>
+            if (id && user && domain) {
+                $.getJSON(`https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`, function(email) {
+                    const contentElement = $('#emailContent');
+                    contentElement.html(`
+                        <div><strong>From:</strong> ${email.from}</div>
+                        <div><strong>Date:</strong> ${email.date}</div>
+                        <div><strong>Subject:</strong> ${email.subject}</div>
+                        <div><strong>Content:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                    `);
 
-  <script src="//code.jquery.com/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get("id");
-      const user = urlParams.get("user");
-      const domain = urlParams.get("domain");
-
-      if (id && user && domain) {
-        $.getJSON(
-          `https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`,
-          (email) => {
-            // Update informasi "From", "Date", dan "Subject"
-            $("#emailFrom").text(email.from);
-            $("#emailDate").text(email.date);
-            $("#emailSubject").text(email.subject);
-
-            // Update isi email
-            const emailContent = $("#emailContent");
-
-            if (email.htmlBody) {
-              emailContent.html(email.htmlBody);
-            } else {
-              emailContent.text(email.body);
+                    // Append attachments if any
+                    if (email.attachments && email.attachments.length > 0) {
+                        const attachments = $('<div><strong>Attachments:</strong><br></div>');
+                        email.attachments.forEach(file => {
+                            attachments.append(`<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a><br>`);
+                        });
+                        contentElement.append(attachments);
+                    }
+                });
             }
+        });
 
-            // Menampilkan lampiran jika ada
-            const atts = $("<div></div>");
-            for (const file of email.attachments) {
-              atts.append(
-                `<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a><br/>`
-              );
-            }
-            emailContent.append(atts);
-          }
-        );
-      } else {
-        $("#emailContent").text("Invalid email data.");
-      }
-    });
-  </script>
+        function warningAlert() {
+            alert(
+                "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses 1secmail's API for creating e-mails. Use it legally ⚠️"
+            );
+        }
+    </script>
 </body>
 </html>
