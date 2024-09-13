@@ -17,7 +17,6 @@
       href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     />
     <script src="api.js"></script>
-
     <script id="_wau776">
       var _wau = _wau || [];
       _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
@@ -35,7 +34,7 @@
     <div class="horizontalContainer">
       <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
-      <button onclick="genEmail()">New Address</button>
+      <button onclick="newAddress()">New Address</button>
     </div>
     <table id="emails"></table>
 
@@ -64,10 +63,34 @@
         setInterval(function () {
           refreshMail();
         }, 500); // 5000ms = 5 detik
+
+        // Load the saved address from sessionStorage
+        const savedAddress = sessionStorage.getItem('emailAddress');
+        if (savedAddress) {
+          document.getElementById('addr').value = savedAddress;
+          refreshMail(); // Refresh mail with saved address
+        }
       };
 
-      function closePopup() {
-        document.getElementById("popupNotification").style.display = "none";
+      function refreshMail() {
+        const emailAddress = document.getElementById('addr').value;
+
+        if (emailAddress) {
+          // Save the address in sessionStorage
+          sessionStorage.setItem('emailAddress', emailAddress);
+
+          // Your existing logic to refresh mail using the emailAddress
+          // Example: Fetch emails and update the #emails table
+        }
+      }
+
+      function newAddress() {
+        // Clear the saved address in sessionStorage
+        sessionStorage.removeItem('emailAddress');
+        document.getElementById('addr').value = '';
+
+        // Load a new address or perform related logic
+        // For instance, generate a new email address and update #emails table
       }
     </script>
   </body>
