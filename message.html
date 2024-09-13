@@ -111,7 +111,7 @@
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
                         <div><strong>Subject:</strong>${email.subject}</div>
-                        <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div><br><strong>Message:</strong>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
