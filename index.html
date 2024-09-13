@@ -66,6 +66,39 @@
         }, 500); // 5000ms = 5 detik
       };
 
+      function refreshMail() {
+        // Contoh data email
+        var emails = [
+          { from: "someone@example.com", subject: "Test email", date: "2024-09-13" },
+          { from: "another@example.com", subject: "Hello", date: "2024-09-12" }
+        ];
+
+        var table = document.getElementById('emails');
+        table.innerHTML = ''; // Reset table
+
+        // Membuat header tabel (tanpa kolom ID)
+        var header = `
+          <tr>
+            <th>From</th>
+            <th>Subject</th>
+            <th>Date</th>
+          </tr>
+        `;
+        table.innerHTML += header;
+
+        // Loop untuk menambah baris data ke tabel (tanpa kolom ID)
+        emails.forEach(function (email) {
+          var row = `
+            <tr>
+              <td>${email.from}</td>
+              <td>${email.subject}</td>
+              <td>${email.date}</td>
+            </tr>
+          `;
+          table.innerHTML += row;
+        });
+      }
+
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
       }
