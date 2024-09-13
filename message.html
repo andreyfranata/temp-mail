@@ -16,36 +16,22 @@
         href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     />
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
+    <script src="api.js"></script>
     <style>
         body {
             margin: 0;
             font-family: "Arial", sans-serif;
         }
 
-        header, footer {
+        header {
             background-color: #040e66;
             color: #fff;
             padding: 1rem;
             text-align: center;
-            width: 100%;
-        }
-
-        header {
-            margin-bottom: 20px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            margin-top: 20px;
         }
 
         .contentContainer {
             padding: 20px;
-            max-width: 800px; /* Set maximum width for content container */
-            margin: 0 auto; /* Center the container */
         }
 
         #emailContent {
@@ -53,7 +39,6 @@
             padding: 20px;
             border-radius: 5px;
             background-color: #f9f9f9;
-            word-wrap: break-word; /* Ensure long words break to fit container */
         }
 
         #emailContent div {
@@ -63,6 +48,18 @@
         #emailContent strong {
             display: block;
             margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #040e66;
+            color: #fff;
+            text-align: center;
+            font-size: small;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
         }
 
         .social a {
@@ -113,8 +110,8 @@
                     contentElement.html(`
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
-                        <div><strong>Subject:</strong> ${email.subject}</div>
-                        <div><br><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div><strong>Subject:</strong>${email.subject}</div>
+                        <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
@@ -128,6 +125,12 @@
                 });
             }
         });
+
+        function warningAlert() {
+            alert(
+                "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses 1secmail's API for creating e-mails. Use it legally ⚠️"
+            );
+        }
     </script>
 </body>
 </html>
