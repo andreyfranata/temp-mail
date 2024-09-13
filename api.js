@@ -65,7 +65,9 @@ function refreshMail() {
               <td>${email.from}</td>
               <td>${email.subject}</td>
               <td>${email.date}</td>
-              <td id="${email.id}"><a onclick="loadEmail('${email.id}')">Load content...</a></td>
+              <td id="${email.id}">
+                <a style="color: blue; text-decoration: underline; cursor: pointer;" onclick="loadEmail('${email.id}')">View</a>
+              </td>
             </tr>
           `);
       }
