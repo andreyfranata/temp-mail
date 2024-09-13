@@ -29,7 +29,10 @@
   <body>
     <header></header>
     <div class="horizontalContainer">
-      <input id="addr" placeholder="email address" />
+      <div class="input-wrapper">
+        <input id="addr" placeholder="email address" />
+        <button id="clear-btn" onclick="clearEmail()">X</button>
+      </div>
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
     </div>
@@ -68,6 +71,10 @@
 
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
+      }
+
+      function clearEmail() {
+        document.getElementById('addr').value = ''; // Menghapus seluruh teks
       }
     </script>
   </body>
