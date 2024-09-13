@@ -22,8 +22,6 @@ function warningAlert() {
 function getUserAndDomain() {
   const addr = $("#addr").val();
   if (!addr) {
-    // Menghapus pesan peringatan
-    // alert("Please generate or input an email address first!");
     return null;
   }
 
@@ -54,7 +52,6 @@ function refreshMail() {
 
       emailsElement.append(`
           <tr>
-            <th><b>ID</b></th>
             <th><b>From</b></th>
             <th><b>Subject</b></th>
             <th><b>Date</b></th>
@@ -65,7 +62,6 @@ function refreshMail() {
       for (const email of emails) {
         emailsElement.append(`
             <tr>
-              <td>${email.id}</td>
               <td>${email.from}</td>
               <td>${email.subject}</td>
               <td>${email.date}</td>
@@ -82,25 +78,8 @@ function loadEmail(id) {
 
   if (!user || !domain) return;
 
-  $.getJSON(
-    `https://www.1secmail.com/api/v1/?action=readMessage&login=${user}&domain=${domain}&id=${id}`,
-    (email) => {
-      const elm = $(`#${id}`);
-      if (email.htmlBody) {
-        elm.html(email.htmlBody);
-      } else {
-        elm.text(email.body);
-      }
-
-      const atts = $("<div></div>");
-      for (const file of email.attachments) {
-        atts.append(
-          `<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a>`
-        );
-      }
-      elm.append(atts);
-    }
-  );
+  // Redirect ke halaman baru content.html dan kirim parameter user, domain, dan id
+  window.location.href = `content.html?id=${id}&user=${user}&domain=${domain}`;
 }
 
 // Initialize email generation on page load
