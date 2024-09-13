@@ -6,7 +6,6 @@
     <title>TempMail</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
-    <link rel="manifest" href="manifest.json" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -21,14 +20,19 @@
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   </head>
   <body>
-    <header></header>
-    <div class="horizontalContainer">
-      <input id="addr" placeholder="email address" />
-      <button onclick="refreshMail()">Load Mail</button>
-      <button onclick="genEmail()">New Address</button>
-      <button onclick="clearAddr()">Clear Address</button>
-    </div>
-    <table id="emails"></table>
+    <header style="background-color: #001f3f; color: white; padding: 20px;">
+      <h1>TempMail</h1>
+      <!-- Pindahkan input email ke dalam header -->
+      <div class="horizontalContainer" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <input id="addr" style="width: 300px;" placeholder="email address" />
+        <button onclick="refreshMail()">Load Mail</button>
+        <button onclick="genEmail()">New Address</button>
+        <button onclick="clearAddr()">Clear Address</button>
+        <button onclick="pasteFromClipboard()">Paste from Clipboard</button>
+      </div>
+    </header>
+
+    <table id="emails" style="width: 100%; margin-top: 20px;"></table>
 
     <footer>
       Andrey Franata - 2024 - TempMail -
@@ -56,13 +60,20 @@
         document.getElementById('addr').value = '';
       }
 
-      // Event listener untuk menempelkan teks ke dalam input 'addr'
-      document.getElementById('addr').addEventListener('paste', function(event) {
-        // Ambil data clipboard
-        const pastedText = (event.clipboardData || window.clipboardData).getData('text');
-        this.value = pastedText; // Memasukkan teks yang ditempel
-        event.preventDefault(); // Mencegah perilaku default (opsional)
-      });
+      // Fungsi untuk paste dari clipboard
+      function pasteFromClipboard() {
+        // Meminta akses clipboard dan menempelkan teks jika ada
+        navigator.clipboard.readText().then(function(text) {
+          if (text.includes('@') && text.includes('.')) {
+            document.getElementById('addr').value = text;
+          } else {
+            alert("Clipboard tidak berisi email yang valid.");
+          }
+        }).catch(function(err) {
+          console.error('Gagal mendapatkan akses clipboard: ', err);
+          alert("Gagal mendapatkan akses clipboard.");
+        });
+      }
 
       window.onload = function () {
         // Memanggil refreshMail() segera setelah halaman dimuat
@@ -71,7 +82,7 @@
         // Memanggil refreshMail() setiap 5 detik secara otomatis
         setInterval(function () {
           refreshMail();
-        }, 500); // 5000ms = 5 detik
+        }, 5000); // 5000ms = 5 detik
       };
 
       function closePopup() {
