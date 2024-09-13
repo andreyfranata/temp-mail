@@ -28,22 +28,41 @@
   --transition: all 0.5s ease;
 }
 
-header {
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  padding: 0.5rem; /* Reduced padding */
-  text-align: center;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
+header ::selection {
+  background-color: transparent;
 }
 
-header h1 {
+header {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  padding: 1rem 0;
+  text-align: center;
+  top: 0;
+  left: 0;
   margin: 0;
-  font-size: 1.5rem; /* Adjust font size */
+  width: 100%;
+  z-index: 1000;
+}
+
+header .ascii-art {
+  font-size: 0.6rem;
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+  margin: 0;
+}
+
+header p {
+  margin: 0;
+  font-size: 60%;
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  font-weight: bolder !important;
 }
 
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
   font-weight: bolder !important;
   border: 1px solid var(--dark-color);
@@ -78,7 +97,7 @@ button.success {
 }
 
 input {
-  padding: 0.5rem;
+  padding: 0.25rem;
   font-size: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--secondary-color);
@@ -117,18 +136,18 @@ input:focus {
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  left: 10px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 50%;
-  background-color: var(--danger-color);
+  background-color: red;
   width: 25px;
   height: 25px;
   color: white;
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
 }
 
 .horizontalContainer {
@@ -136,22 +155,21 @@ input:focus {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  border-top: 2px solid var(--primary-color); /* Garis biru di atas */
   padding: 10px 0;
-  width: 100%;
-  max-width: 1200px; /* Optional: max width for better alignment */
+  max-width: 100%; /* Mencegah elemen melampaui lebar */
   margin: 0 auto;
 }
 
 #addr {
   flex: 1;
-  max-width: 70%; /* Increased width */
+  max-width: 60%; /* Membatasi lebar maksimal input */
   padding: 10px;
 }
 
 .horizontalContainer button {
-  flex: 0 0 auto; /* Prevent buttons from growing */
-  padding: 0.35rem 1rem; /* Reduced padding */
-  font-size: 0.7rem; /* Adjusted font size */
+  flex: 0 1 auto;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
@@ -160,6 +178,10 @@ input:focus {
   border-collapse: collapse;
   margin-top: 20px;
   text-align: center;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #emails th,
@@ -170,6 +192,7 @@ input:focus {
 
 #emails th {
   background-color: #f2f2f2;
+  text-align: center;
 }
 
 footer {
@@ -181,22 +204,26 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
+  margin: 0;
   width: 100%;
   font-weight: bolder !important;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
 }
 
 .social {
+  width: fit-content;
+  height: auto;
+  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0;
+  margin: 0 auto;
 }
-
 .social a {
-  margin: 0 5px;
+  margin: 5px;
   font-size: 1rem;
-  color: var(--light-color);
+  text-align: center;
+  display: inline-block;
+  color: var(--main-fonts-color);
 }
 
 .social a:hover {
@@ -219,60 +246,90 @@ footer {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  button {
-    font-size: 0.6rem;
-  }
-  input {
-    font-size: 0.8rem;
-  }
-  #emails {
-    font-size: 0.8rem;
-  }
-  #emails th,
-  #emails td {
-    padding: 0.5rem;
-  }
-  header h1 {
-    font-size: 1.25rem;
-  }
-  footer {
-    font-size: 0.75rem;
-  }
-}
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   button {
     font-size: 0.5rem;
   }
   input {
-    font-size: 0.7rem;
+    font-size: 0.76rem;
   }
-  #emails {
-    font-size: 0.7rem;
+  table {
+    font-size: 0.76rem;
   }
-  header h1 {
-    font-size: 1.1rem;
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 50%;
   }
   footer {
-    font-size: 0.6rem;
+    font-size: 50%;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 576px) {
+  .ascii-art {
+    font-size: 0.5rem !important;
+  }
   button {
     font-size: 0.4rem;
   }
   input {
     font-size: 0.6rem;
   }
-  #emails {
+  table {
     font-size: 0.6rem;
   }
-  header h1 {
-    font-size: 1rem;
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 40%;
   }
   footer {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 320px) {
+  .ascii-art {
+    font-size: 0.4rem !important;
+  }
+  button {
+    font-size: 0.3rem;
+  }
+  input {
     font-size: 0.5rem;
+  }
+  table {
+    font-size: 0.5rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 30%;
+  }
+  footer {
+    font-size: 30%;
   }
 }
