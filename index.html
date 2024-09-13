@@ -63,18 +63,19 @@
         // Memanggil refreshMail() setiap 5 detik secara otomatis
         setInterval(function () {
           refreshMail();
-        }, 500); // 5000ms = 5 detik
+        }, 5000); // 5000ms = 5 detik
       };
 
       function refreshMail() {
-        // Contoh data email
+        // Data contoh email
         var emails = [
           { from: "someone@example.com", subject: "Test email", date: "2024-09-13" },
-          { from: "another@example.com", subject: "Hello", date: "2024-09-12" }
+          { from: "another@example.com", subject: "Hello", date: "2024-09-12" },
+          { from: "contact@example.com", subject: "Meeting update", date: "2024-09-11" }
         ];
 
         var table = document.getElementById('emails');
-        table.innerHTML = ''; // Reset table
+        table.innerHTML = ''; // Reset tabel sebelum diisi ulang
 
         // Membuat header tabel (tanpa kolom ID)
         var header = `
@@ -86,7 +87,7 @@
         `;
         table.innerHTML += header;
 
-        // Loop untuk menambah baris data ke tabel (tanpa kolom ID)
+        // Loop untuk menambah baris data ke tabel
         emails.forEach(function (email) {
           var row = `
             <tr>
@@ -101,6 +102,15 @@
 
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
+      }
+
+      function genEmail() {
+        // Fungsi untuk menghasilkan alamat email baru (misalnya)
+        document.getElementById("addr").value = "newemail@example.com";
+      }
+
+      function warningAlert() {
+        alert("This is a warning message!");
       }
     </script>
   </body>
