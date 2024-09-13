@@ -28,40 +28,10 @@
   </head>
   <body>
     <header>
-      <div class="ascii-art">
-        <pre>
-
-          ████████╗███████╗███╗   ███╗██████╗     ███╗   ███╗ █████╗ ██╗██╗     
-          ╚══██╔══╝██╔════╝████╗ ████║██╔══██╗    ████╗ ████║██╔══██╗██║██║     
-             ██║   █████╗  ██╔████╔██║██████╔╝    ██╔████╔██║███████║██║██║     
-             ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝     ██║╚██╔╝██║██╔══██║██║██║     
-             ██║   ███████╗██║ ╚═╝ ██║██║         ██║ ╚═╝ ██║██║  ██║██║███████╗
-             ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝         ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
-                                                                      
-        </pre>
+      <div class="header-content">
+        <h1>Temp-Mail</h1>
       </div>
     </header>
-    <div id="popupNotification" class="popup">
-      <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <p class="main">Welcome to the TempMail!</p>
-        <p>
-          TempMail is a simple web application that allows you to generate
-          temporary email addresses and view the emails received by these
-          addresses.
-        </p>
-        <p>This project use 1secmail's api for create e-mails. </p>
-        <p>
-          ⚠️ This project is purely for educational purposes. We do not allow
-          illegal things to be done with this project and we are not responsible
-          for any incidents that may occur. Use it legally ⚠️
-        </p>
-
-        <p class="main" style="font-size: 0.75rem !important">
-          &copy; 2024 Mehmet Kahya - TempMail
-        </p>
-      </div>
-    </div>
     <div class="horizontalContainer">
       <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
@@ -70,20 +40,16 @@
     <table id="emails"></table>
 
     <footer>
-      Mehmet Kahya - 2024 - TempMail -
-      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail </a>
+      Andrey Franata - 2024 - TempMail -
+      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
       <div class="social">
-        <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
-          ><i class="fas fa-envelope"></i
-        ></a>
-        <a href="https://github.com/mehmetkahya0" target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
+        <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/mehmetkahya0" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
-
-      <button class="warning-button" onclick="warningAlert()">
-        ⚠️ Warning Note ⚠️
-      </button>
     </footer>
 
     <script src="//code.jquery.com/jquery.min.js"></script>
@@ -91,7 +57,13 @@
 
     <script>
       window.onload = function () {
-        document.getElementById("popupNotification").style.display = "block";
+        // Memanggil refreshMail() segera setelah halaman dimuat
+        refreshMail();
+
+        // Memanggil refreshMail() setiap 5 detik secara otomatis
+        setInterval(function () {
+          refreshMail();
+        }, 500); // 5000ms = 5 detik
       };
 
       function closePopup() {
