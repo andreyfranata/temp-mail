@@ -23,15 +23,10 @@
             font-family: "Arial", sans-serif;
         }
 
-        header {
-            background-color: #040e66;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
         .contentContainer {
             padding: 20px;
+            max-width: 800px; /* Set maximum width for content container */
+            margin: 0 auto; /* Center the container */
         }
 
         #emailContent {
@@ -39,6 +34,7 @@
             padding: 20px;
             border-radius: 5px;
             background-color: #f9f9f9;
+            word-wrap: break-word; /* Ensure long words break to fit container */
         }
 
         #emailContent div {
@@ -49,52 +45,14 @@
             display: block;
             margin-bottom: 5px;
         }
-
-        footer {
-            background-color: #040e66;
-            color: #fff;
-            text-align: center;
-            font-size: small;
-            padding: 0.5rem;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-
-        .social a {
-            margin: 5px;
-            font-size: 1rem;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .social a:hover {
-            color: #d6e3f3;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Temp-Mail</h1>
-    </header>
     <div class="contentContainer">
         <div id="emailContent">
             <!-- Email content will be loaded here -->
         </div>
     </div>
-    <footer>
-        Andrey Franata - 2024 - TempMail -
-        <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
-        <div class="social">
-            <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://github.com/mehmetkahya0" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-    </footer>
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
