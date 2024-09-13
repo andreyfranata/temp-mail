@@ -110,7 +110,7 @@
                     contentElement.html(`
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
-                        <div><strong>Subject:</strong>${email.subject}</div>
+                        <div><strong>Subject:</strong><br>${email.subject}</div>
                         <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
