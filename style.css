@@ -28,29 +28,18 @@
   --transition: all 0.5s ease;
 }
 
-header ::selection {
-  background-color: transparent;
-}
-
 header {
   background-color: var(--primary-color);
   color: var(--light-color);
-  padding: 0.5rem; /* Adjust padding */
+  padding: 0.5rem; /* Reduced padding */
   text-align: center;
   width: 100%;
-  box-sizing: border-box;
-  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
 }
 
 header h1 {
   margin: 0;
   font-size: 1.5rem; /* Adjust font size */
-}
-
-header img {
-  width: 30px; /* Adjust logo size */
-  vertical-align: middle;
-  margin-right: 10px;
 }
 
 button {
@@ -96,7 +85,6 @@ input {
   margin: 0.25rem;
   width: 100%;
   outline: none;
-  box-sizing: border-box;
 }
 
 input:focus {
@@ -148,22 +136,22 @@ input:focus {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  border-top: 2px solid var(--primary-color); /* Blue line on top */
   padding: 10px 0;
   width: 100%;
-  max-width: 1200px; /* Limit container width */
+  max-width: 1200px; /* Optional: max width for better alignment */
   margin: 0 auto;
 }
 
 #addr {
   flex: 1;
-  max-width: 60%; /* Limit input width */
+  max-width: 70%; /* Increased width */
   padding: 10px;
 }
 
 .horizontalContainer button {
-  flex: 0 1 auto;
-  padding: 10px 20px;
+  flex: 0 0 auto; /* Prevent buttons from growing */
+  padding: 0.35rem 1rem; /* Reduced padding */
+  font-size: 0.7rem; /* Adjusted font size */
   cursor: pointer;
 }
 
@@ -194,8 +182,8 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  box-sizing: border-box;
   font-weight: bolder !important;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
 }
 
 .social {
@@ -233,7 +221,7 @@ footer {
 
 @media (max-width: 768px) {
   button {
-    font-size: 0.7rem; /* Adjusted font size */
+    font-size: 0.6rem;
   }
   input {
     font-size: 0.8rem;
@@ -255,7 +243,7 @@ footer {
 
 @media (max-width: 576px) {
   button {
-    font-size: 0.6rem; /* Adjusted font size */
+    font-size: 0.5rem;
   }
   input {
     font-size: 0.7rem;
@@ -273,7 +261,7 @@ footer {
 
 @media (max-width: 320px) {
   button {
-    font-size: 0.5rem; /* Adjusted font size */
+    font-size: 0.4rem;
   }
   input {
     font-size: 0.6rem;
