@@ -62,8 +62,8 @@ header p {
 }
 
 button {
-  padding: 0.45rem 0.75rem;
-  font-size: 0.75rem;
+  padding: 0.5rem 1rem; /* Increase padding for better size */
+  font-size: 1rem; /* Ensure font size is consistent */
   font-weight: bolder !important;
   border: 1px solid var(--dark-color);
   border-radius: var(--border-radius);
@@ -97,12 +97,12 @@ button.success {
 }
 
 input {
-  padding: 0.25rem;
+  padding: 0.5rem; /* Increase padding for better size */
   font-size: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--secondary-color);
   margin: 0.25rem;
-  width: 100%;
+  width: calc(100% - 2.75rem); /* Adjust width to account for button */
   outline: none;
 }
 
@@ -163,7 +163,7 @@ input:focus {
 #addr {
   flex: 1;
   max-width: 49%;
-  padding-right: 40px; /* Space for the clear button */
+  padding-right: 2.75rem; /* Space for the clear button */
 }
 
 #clear-btn {
