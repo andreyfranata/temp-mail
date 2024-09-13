@@ -44,21 +44,16 @@ header {
   z-index: 1000;
 }
 
-header .ascii-art {
-  font-size: 0.6rem;
-  font-weight: bolder;
-  color: rgb(255, 255, 255);
+header h1 {
   margin: 0;
+  font-size: 2rem;
+  color: var(--light-color);
 }
 
-header p {
-  margin: 0;
-  font-size: 60%;
-  width: fit-content;
-  text-align: center;
-  margin: 0 auto;
-  color: white;
-  font-weight: bolder !important;
+header img {
+  width: 40px; /* Ukuran logo */
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 button {
@@ -218,6 +213,7 @@ footer {
   justify-content: center;
   margin: 0 auto;
 }
+
 .social a {
   margin: 5px;
   font-size: 1rem;
@@ -246,7 +242,6 @@ footer {
   cursor: pointer;
 }
 
-
 @media (max-width: 768px) {
   button {
     font-size: 0.5rem;
@@ -266,8 +261,8 @@ footer {
   header img {
     width: 100%;
   }
-  header p {
-    font-size: 50%;
+  header h1 {
+    font-size: 1.5rem;
   }
   footer {
     font-size: 50%;
@@ -296,8 +291,8 @@ footer {
   header img {
     width: 100%;
   }
-  header p {
-    font-size: 40%;
+  header h1 {
+    font-size: 1.2rem;
   }
   footer {
     font-size: 40%;
@@ -326,8 +321,8 @@ footer {
   header img {
     width: 100%;
   }
-  header p {
-    font-size: 30%;
+  header h1 {
+    font-size: 1rem;
   }
   footer {
     font-size: 30%;
