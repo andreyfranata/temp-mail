@@ -20,17 +20,18 @@
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   </head>
   <body>
-    <header style="background-color: #001f3f; color: white; padding: 20px;">
+    <!-- Bagian header dengan email input -->
+    <header style="background-color: #001f3f; color: white; padding: 20px; text-align: center;">
       <h1>TempMail</h1>
-      <!-- Pindahkan input email ke dalam header -->
-      <div class="horizontalContainer" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-        <input id="addr" style="width: 300px;" placeholder="email address" />
-        <button onclick="refreshMail()">Load Mail</button>
-        <button onclick="genEmail()">New Address</button>
-        <button onclick="clearAddr()">Clear Address</button>
-        <button onclick="pasteFromClipboard()">Paste from Clipboard</button>
-      </div>
+      <input id="addr" style="width: 300px;" placeholder="email address" />
     </header>
+
+    <!-- Tombol-tombol di bagian bawah -->
+    <div class="horizontalContainer" style="margin-top: 20px; text-align: center;">
+      <button onclick="refreshMail()">Load Mail</button>
+      <button onclick="genEmail()">New Address</button>
+      <button onclick="clearAddr()">Clear Address</button>
+    </div>
 
     <table id="emails" style="width: 100%; margin-top: 20px;"></table>
 
@@ -60,21 +61,6 @@
         document.getElementById('addr').value = '';
       }
 
-      // Fungsi untuk paste dari clipboard
-      function pasteFromClipboard() {
-        // Meminta akses clipboard dan menempelkan teks jika ada
-        navigator.clipboard.readText().then(function(text) {
-          if (text.includes('@') && text.includes('.')) {
-            document.getElementById('addr').value = text;
-          } else {
-            alert("Clipboard tidak berisi email yang valid.");
-          }
-        }).catch(function(err) {
-          console.error('Gagal mendapatkan akses clipboard: ', err);
-          alert("Gagal mendapatkan akses clipboard.");
-        });
-      }
-
       window.onload = function () {
         // Memanggil refreshMail() segera setelah halaman dimuat
         refreshMail();
@@ -82,12 +68,8 @@
         // Memanggil refreshMail() setiap 5 detik secara otomatis
         setInterval(function () {
           refreshMail();
-        }, 5000); // 5000ms = 5 detik
+        }, 500); // 5000ms = 5 detik
       };
-
-      function closePopup() {
-        document.getElementById("popupNotification").style.display = "none";
-      }
     </script>
   </body>
 </html>
