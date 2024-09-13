@@ -34,30 +34,26 @@ header ::selection {
 
 header {
   background-color: var(--primary-color);
-  color: var(--dark-color);
-  padding: 1rem 0;
+  color: var(--light-color);
+  padding: 0.5rem 1rem; /* Reduced padding */
   text-align: center;
-  top: 0;
-  left: 0;
-  margin: 0;
   width: 100%;
   z-index: 1000;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2rem;
-  color: var(--light-color);
+  font-size: 1.5rem; /* Reduced font size */
 }
 
 header img {
-  width: 40px; /* Ukuran logo */
+  width: 30px; /* Adjusted logo size */
   vertical-align: middle;
   margin-right: 10px;
 }
 
 button {
-  padding: 0.45rem 0.75rem;
+  padding: 0.5rem 1rem;
   font-size: 0.75rem;
   font-weight: bolder !important;
   border: 1px solid var(--dark-color);
@@ -92,7 +88,7 @@ button.success {
 }
 
 input {
-  padding: 0.25rem;
+  padding: 0.5rem;
   font-size: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--secondary-color);
@@ -131,18 +127,18 @@ input:focus {
 
 .close-btn {
   position: absolute;
-  top: 0;
-  left: 10px;
+  top: 10px;
+  right: 10px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 50%;
-  background-color: red;
+  background-color: var(--danger-color);
   width: 25px;
   height: 25px;
   color: white;
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
 }
 
 .horizontalContainer {
@@ -150,15 +146,16 @@ input:focus {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  border-top: 2px solid var(--primary-color); /* Garis biru di atas */
+  border-top: 2px solid var(--primary-color); /* Blue line on top */
   padding: 10px 0;
-  max-width: 100%; /* Mencegah elemen melampaui lebar */
+  width: 100%; /* Ensure full width */
+  max-width: 1200px; /* Optional: max width for better alignment */
   margin: 0 auto;
 }
 
 #addr {
   flex: 1;
-  max-width: 60%; /* Membatasi lebar maksimal input */
+  max-width: 60%; /* Limit input width */
   padding: 10px;
 }
 
@@ -173,10 +170,6 @@ input:focus {
   border-collapse: collapse;
   margin-top: 20px;
   text-align: center;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #emails th,
@@ -187,7 +180,6 @@ input:focus {
 
 #emails th {
   background-color: #f2f2f2;
-  text-align: center;
 }
 
 footer {
@@ -199,27 +191,21 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
-  margin: 0;
   width: 100%;
   font-weight: bolder !important;
 }
 
 .social {
-  width: fit-content;
-  height: auto;
-  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 10px 0;
 }
 
 .social a {
-  margin: 5px;
+  margin: 0 5px;
   font-size: 1rem;
-  text-align: center;
-  display: inline-block;
-  color: var(--main-fonts-color);
+  color: var(--light-color);
 }
 
 .social a:hover {
@@ -244,87 +230,58 @@ footer {
 
 @media (max-width: 768px) {
   button {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
   input {
-    font-size: 0.76rem;
+    font-size: 0.8rem;
   }
-  table {
-    font-size: 0.76rem;
+  #emails {
+    font-size: 0.8rem;
   }
-
-  table th,
-  table td {
-    padding: 0.2rem;
-  }
-
-  header img {
-    width: 100%;
+  #emails th,
+  #emails td {
+    padding: 0.5rem;
   }
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   footer {
-    font-size: 50%;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 576px) {
-  .ascii-art {
-    font-size: 0.5rem !important;
+  button {
+    font-size: 0.5rem;
   }
+  input {
+    font-size: 0.7rem;
+  }
+  #emails {
+    font-size: 0.7rem;
+  }
+  header h1 {
+    font-size: 1.1rem;
+  }
+  footer {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 320px) {
   button {
     font-size: 0.4rem;
   }
   input {
     font-size: 0.6rem;
   }
-  table {
+  #emails {
     font-size: 0.6rem;
-  }
-
-  table th,
-  table td {
-    padding: 0.2rem;
-  }
-
-  header img {
-    width: 100%;
-  }
-  header h1 {
-    font-size: 1.2rem;
-  }
-  footer {
-    font-size: 40%;
-  }
-}
-
-@media (max-width: 320px) {
-  .ascii-art {
-    font-size: 0.4rem !important;
-  }
-  button {
-    font-size: 0.3rem;
-  }
-  input {
-    font-size: 0.5rem;
-  }
-  table {
-    font-size: 0.5rem;
-  }
-
-  table th,
-  table td {
-    padding: 0.2rem;
-  }
-
-  header img {
-    width: 100%;
   }
   header h1 {
     font-size: 1rem;
   }
   footer {
-    font-size: 30%;
+    font-size: 0.5rem;
   }
 }
