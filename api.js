@@ -15,14 +15,15 @@ console.log("API is ready!");
 
 function warningAlert() {
   alert(
-    "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project use 1secmail's api for create e-mails. Use it legally ⚠️"
+    "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses 1secmail's API for creating e-mails. Use it legally ⚠️"
   );
 }
 
 function getUserAndDomain() {
   const addr = $("#addr").val();
   if (!addr) {
-    alert("Please generate or input an email address first!");
+    // Menghapus pesan peringatan
+    // alert("Please generate or input an email address first!");
     return null;
   }
 
@@ -75,6 +76,7 @@ function refreshMail() {
     }
   );
 }
+
 function loadEmail(id) {
   const { user, domain } = getUserAndDomain();
 
@@ -101,4 +103,5 @@ function loadEmail(id) {
   );
 }
 
+// Initialize email generation on page load
 $(genEmail);
