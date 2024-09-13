@@ -55,7 +55,7 @@ function refreshMail() {
             <th><b>From</b></th>
             <th><b>Subject</b></th>
             <th><b>Date</b></th>
-            <th><b>View</b></th>
+            <th><b>Content</b></th>
           </tr>
         `);
 
@@ -65,14 +65,13 @@ function refreshMail() {
               <td>${email.from}</td>
               <td>${email.subject}</td>
               <td>${email.date}</td>
-              <td id="${email.id}"><a onclick="loadEmail('${email.id}')" style="color: blue;"><i class="fas fa-eye"></i> View</a></td>
+              <td id="${email.id}">
+                <a style="color: blue; text-decoration: underline; cursor: pointer;" onclick="loadEmail('${email.id}')">
+                  <i class="fas fa-eye"></i> View
+                </a>
+              </td>
             </tr>
           `);
-
-        // Check if domain matches and generate a new email address
-        if (email.from.includes("dpptd.com")) {
-          genEmail(); // Generate a new email address
-        }
       }
     }
   );
@@ -83,11 +82,9 @@ function loadEmail(id) {
 
   if (!user || !domain) return;
 
-  // Redirect to content.html and send parameters user, domain, and id
-  window.location.href = `content.html?id=${id}&user=${user}&domain=${domain}`;
+  // Redirect ke halaman baru content.html dan kirim parameter user, domain, dan id
+  window.location.href = `message.html?id=${id}&user=${user}&domain=${domain}`;
 }
 
 // Initialize email generation on page load
-$(document).ready(function() {
-  genEmail(); // Automatically generate a new email address
-});
+$(genEmail);
