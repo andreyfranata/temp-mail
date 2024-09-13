@@ -29,10 +29,7 @@
   <body>
     <header></header>
     <div class="horizontalContainer">
-      <div class="input-wrapper">
-        <input id="addr" placeholder="email address" />
-        <button id="clear-btn" onclick="clearEmail()">X</button>
-      </div>
+      <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
     </div>
@@ -45,7 +42,7 @@
         <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
           ><i class="fas fa-envelope"></i
         ></a>
-        <a href="https://github.com/mehmetkahyakas5" target="_blank"
+        <a href="https://github.com/mehmetkahya0" target="_blank"
           ><i class="fab fa-github"></i
         ></a>
       </div>
@@ -71,10 +68,6 @@
 
       function closePopup() {
         document.getElementById("popupNotification").style.display = "none";
-      }
-
-      function clearEmail() {
-        document.getElementById('addr').value = ''; // Menghapus seluruh teks
       }
     </script>
   </body>
