@@ -200,6 +200,9 @@ input:focus {
 #emails td {
   border: 1px solid #ddd;
   padding: 8px;
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
 #emails th {
