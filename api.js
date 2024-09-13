@@ -83,7 +83,7 @@ function loadEmail(id) {
   if (!user || !domain) return;
 
   // Redirect ke halaman baru content.html dan kirim parameter user, domain, dan id
-  window.location.href = `content.html?id=${id}&user=${user}&domain=${domain}`;
+  window.location.href = `message.html?id=${id}&user=${user}&domain=${domain}`;
 }
 
 // Initialize email generation on page load
