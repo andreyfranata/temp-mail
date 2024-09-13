@@ -20,7 +20,7 @@
 </head>
 <body>
     <header>
-        <h1><img src="images/temp-mail-logo.png" alt="Temp-Mail Logo" /> Temp-Mail</h1>
+        <h1>Temp-Mail</h1>
     </header>
     <div class="contentContainer">
         <div id="emailContent">
@@ -55,12 +55,12 @@
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
                         <div><strong>Subject:</strong><br>${email.subject}</div>
-                        <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div style="margin-top: 20px;"><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
                     if (email.attachments && email.attachments.length > 0) {
-                        const attachments = $('<div><strong>Attachments:</strong><br></div>');
+                        const attachments = $('<div style="margin-top: 20px;"><strong>Attachments:</strong><br></div>');
                         email.attachments.forEach(file => {
                             attachments.append(`<a href='https://www.1secmail.com/api/v1/?action=download&login=${user}&domain=${domain}&id=${id}&file=${file.filename}'>${file.filename}</a><br>`);
                         });
