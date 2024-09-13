@@ -1,8 +1,3 @@
-<!--------------------------------
-    Author: Mehmet Kahya
-    Created: 17 March 2024
-    Last Updated: 28 Aug 2024
--------------------------------->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +18,6 @@
       _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
     </script>
     <script async src="//waust.at/d.js"></script>
-    <!-- Add favicon -->
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   </head>
   <body>
@@ -32,12 +26,13 @@
       <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
+      <button onclick="clearAddr()">Clear Address</button>
     </div>
     <table id="emails"></table>
 
     <footer>
       Andrey Franata - 2024 - TempMail -
-      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail </a>
+      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
       <div class="social">
         <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
           ><i class="fas fa-envelope"></i
@@ -56,6 +51,19 @@
     <script src="api.js"></script>
 
     <script>
+      // Menghapus isi input 'addr'
+      function clearAddr() {
+        document.getElementById('addr').value = '';
+      }
+
+      // Event listener untuk menempelkan teks ke dalam input 'addr'
+      document.getElementById('addr').addEventListener('paste', function(event) {
+        // Ambil data clipboard
+        const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+        this.value = pastedText; // Memasukkan teks yang ditempel
+        event.preventDefault(); // Mencegah perilaku default (opsional)
+      });
+
       window.onload = function () {
         // Memanggil refreshMail() segera setelah halaman dimuat
         refreshMail();
@@ -63,7 +71,7 @@
         // Memanggil refreshMail() setiap 5 detik secara otomatis
         setInterval(function () {
           refreshMail();
-        }, 5000); // 5000ms = 5 detik
+        }, 500); // 5000ms = 5 detik
       };
 
       function closePopup() {
