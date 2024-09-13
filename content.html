@@ -19,9 +19,10 @@
     <script src="api.js"></script>
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1><img src="images/temp-mail-logo.png" alt="Temp-Mail Logo" /> Temp-Mail</h1>
+    </header>
     <div class="contentContainer">
-        <button onclick="window.history.back()">Back to Inbox</button>
         <div id="emailContent">
             <!-- Email content will be loaded here -->
         </div>
@@ -53,8 +54,8 @@
                     contentElement.html(`
                         <div><strong>From:</strong> ${email.from}</div>
                         <div><strong>Date:</strong> ${email.date}</div>
-                        <div><strong>Subject:</strong> ${email.subject}</div>
-                        <div><strong>Content:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
+                        <div><strong>Subject:</strong><br>${email.subject}</div>
+                        <div><strong>Message:</strong><br>${email.htmlBody ? email.htmlBody : email.body}</div>
                     `);
 
                     // Append attachments if any
