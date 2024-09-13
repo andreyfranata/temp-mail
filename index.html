@@ -1,3 +1,8 @@
+<!--------------------------------
+    Author: Mehmet Kahya
+    Created: 17 March 2024
+    Last Updated: 28 Aug 2024
+-------------------------------->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +11,7 @@
     <title>TempMail</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
+    <link rel="manifest" href="manifest.json" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -17,28 +23,21 @@
       _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
     </script>
     <script async src="//waust.at/d.js"></script>
+    <!-- Add favicon -->
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   </head>
   <body>
-    <!-- Bagian header dengan input email -->
-    <header style="background-color: #001f3f; padding: 10px; text-align: center;">
-      <input id="addr" style="width: 300px;" placeholder="email address" />
-    </header>
-
-    <!-- Tombol-tombol di bawah -->
-    <div class="horizontalContainer" style="margin-top: 20px; text-align: center;">
+    <header></header>
+    <div class="horizontalContainer">
+      <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
-      <button onclick="clearAddr()">Clear Address</button>
     </div>
+    <table id="emails"></table>
 
-    <!-- Tabel untuk menampilkan email -->
-    <table id="emails" style="width: 100%; margin-top: 20px;"></table>
-
-    <!-- Footer dengan elemen tambahan seperti subject -->
     <footer>
       Andrey Franata - 2024 - TempMail -
-      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail</a>
+      <a href="https://1secmail.com/" target="_blank" style="color: aliceblue;">1sec mail </a>
       <div class="social">
         <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
           ><i class="fas fa-envelope"></i
@@ -53,16 +52,10 @@
       </button>
     </footer>
 
-    <!-- JavaScript untuk fungsionalitas -->
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="api.js"></script>
 
     <script>
-      // Menghapus isi input 'addr'
-      function clearAddr() {
-        document.getElementById('addr').value = '';
-      }
-
       window.onload = function () {
         // Memanggil refreshMail() segera setelah halaman dimuat
         refreshMail();
@@ -73,26 +66,8 @@
         }, 500); // 5000ms = 5 detik
       };
 
-      // Fungsi refreshMail yang menangani input email
-      function refreshMail() {
-        let email = document.getElementById("addr").value;
-
-        // Hanya lanjutkan refresh jika email tidak kosong
-        if (email) {
-          // Tambahkan logika fetch email di sini
-          console.log("Fetching emails for:", email);
-        }
-      }
-
-      // Fungsi genEmail untuk membuat email baru
-      function genEmail() {
-        // Logika pembuatan email baru bisa ditambahkan di sini
-        document.getElementById("addr").value = "newemail@example.com";
-      }
-
-      // Placeholder untuk fungsi warningAlert
-      function warningAlert() {
-        alert("This is a warning message!");
+      function closePopup() {
+        document.getElementById("popupNotification").style.display = "none";
       }
     </script>
   </body>
